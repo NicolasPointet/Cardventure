@@ -1,0 +1,7 @@
+Reste a faire :
+    - sauvegarder partie
+    - charger partie
+    - sprite nouvelle partie
+    - sprite continuer partie
+    - images stuffs
+    - musique(s)
