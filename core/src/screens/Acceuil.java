@@ -44,13 +44,13 @@ public class Acceuil implements Screen {
         music.setLooping(true);
         music.play();
 
-        fond = new Sprite(new Texture("fond.png"));
+        fond = new Sprite(new Texture(game.texture.fond));
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
-        titre = new Sprite(new Texture("cardventure.png"));
+        titre = new Sprite(new Texture(game.texture.cardventure));
         titre.setCenter(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()*3/5);
 
-        passer = new Sprite(new Texture("cliquezpasser.png"));
+        passer = new Sprite(new Texture(game.texture.cliquepasse));
         passer.setCenter(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()*1/5);
 
 

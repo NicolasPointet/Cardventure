@@ -1,6 +1,5 @@
 package com.dualyty.cardventure;
 
-import com.badlogic.gdx.utils.Base64Coder;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
@@ -15,6 +14,8 @@ public class StuffData implements Json.Serializable {
     public Equipement maindroite;
 
     public ArrayList<Equipement> sac;
+
+    //JSONObject stuffDetails = new JSONObject();
 
     public StuffData () {
         Player player = new Player();
@@ -60,7 +61,7 @@ public class StuffData implements Json.Serializable {
 
     @Override
     public void write(Json json) {
-        GameManager.fileHandleS.writeString(Base64Coder.encodeString(json.prettyPrint(this)),
+        GameManager.fileHandleS.writeString((json.prettyPrint(this)),
                 false);
     }
 

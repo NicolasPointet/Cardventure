@@ -5,9 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
@@ -27,7 +25,6 @@ public class Menu implements Screen {
 
     final Cardventure game;
 
-    private SpriteBatch batch;
     private Sprite fond;
 
 
@@ -35,9 +32,6 @@ public class Menu implements Screen {
     private ImageButton newGame;
     private ImageButton continueGame;
 
-    private BitmapFont font;
-
-    Texture carteTexture;
 
     public Menu(Cardventure game) {
         this.game = game;
@@ -48,15 +42,12 @@ public class Menu implements Screen {
 
         stage = new Stage(new ScreenViewport()); //Set up a stage for the ui
 
-        font = new BitmapFont();
-
-        Texture fondTexture = new Texture("fond.png");
+        Texture fondTexture = new Texture(game.texture.fond);
         fond = new Sprite(fondTexture);
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
-        carteTexture = new Texture("carte.png");
-        newGame = new ImageButton(new TextureRegionDrawable(new TextureRegion(carteTexture)));
-        continueGame = new ImageButton(new TextureRegionDrawable(new TextureRegion(carteTexture)));
+        newGame = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.nouvellePartie))));
+        continueGame = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.continuerPartie))));
 
         newGame.setPosition(0,0);
         continueGame.setPosition(Gdx.graphics.getWidth()*2/4,0);
@@ -115,13 +106,6 @@ public class Menu implements Screen {
 
         stage.act(delta); //Perform ui logic
         stage.draw(); //Draw the ui
-
-
-        game.batch.begin();
-        font.getData().setScale(2);
-        font.draw(game.batch," Nouvelle partie ",Gdx.graphics.getWidth()/4-carteTexture.getWidth()/2,Gdx.graphics.getHeight()/2);
-        font.draw(game.batch," Continuer partie ",Gdx.graphics.getWidth()*3/4-carteTexture.getWidth()/2,Gdx.graphics.getHeight()/2);
-        game.batch.end();
 
     }
 

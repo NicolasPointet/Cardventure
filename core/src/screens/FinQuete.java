@@ -52,10 +52,10 @@ public class FinQuete implements Screen {
 
         font = new BitmapFont();
 
-        fond = new Sprite( new Texture("fond.png"));
+        fond = new Sprite( new Texture(game.texture.fond));
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
-        warrior = new Sprite(new Texture("victory.png"));
+        warrior = new Sprite(new Texture(game.texture.victoire));
         warrior.setPosition(0,0);
         warrior.setSize(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight());
 

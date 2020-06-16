@@ -32,7 +32,7 @@ public class Cardventure extends Game {
 	public Test test = new Test(this);					//sert a tester des choses, ne sera plus dans le version finale
 
 	public SpriteBatch batch;
-
+	public Image texture = new Image();
 	public static AssetManager manager;
 
 

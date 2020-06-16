@@ -66,17 +66,17 @@ public class Marchand_vente implements Screen {
     @Override
     public void show() {
 
-        sizeCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
+        sizeCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
         size = sizeCarte.getWidth()/2;
 
         stage = new Stage(new ScreenViewport());
 
         font = new BitmapFont();
 
-        fond = new Sprite( new Texture("fond.png"));
+        fond = new Sprite( new Texture(game.texture.fond));
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
-        or = new Sprite(new Texture("stat_or.png"));
+        or = new Sprite(new Texture(game.texture.or));
         or.setCenter(Gdx.graphics.getWidth()*15/16,Gdx.graphics.getHeight()*15/16);
 
         int compteur = listeStuff.size()+1;
@@ -85,10 +85,10 @@ public class Marchand_vente implements Screen {
 
             ImageButton spriteCarte;
             if (stuff.equipe == false) {
-                spriteCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
+                spriteCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
             }
             else {
-                spriteCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carteEquipe.png"))));
+                spriteCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carteEquipe))));
             }
             float positionX = Gdx.graphics.getWidth()*compteur/(listeStuff.size()+1)-size;
             float positionY = Gdx.graphics.getHeight()/2;
@@ -115,7 +115,7 @@ public class Marchand_vente implements Screen {
         }
 
 
-        previousScreen = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("back.png"))));
+        previousScreen = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.back))));
         previousScreen.setPosition(Gdx.graphics.getWidth()*1/20,Gdx.graphics.getHeight()*9/10);
         stage.addActor(previousScreen);
 
@@ -157,6 +157,9 @@ public class Marchand_vente implements Screen {
             float positionX = Gdx.graphics.getWidth()*compteur/(listeStuff.size()+1)-size;
             float positionY = Gdx.graphics.getHeight()/2;
             font.draw(game.batch,stuff.texte,positionX,positionY);
+            Sprite sprite = new Sprite(stuff.texture);
+            sprite.setPosition(positionX,positionY-sizeCarte.getHeight());
+            sprite.draw(game.batch);
             compteur -= 1;
         }
 

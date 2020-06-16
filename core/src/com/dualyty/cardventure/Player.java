@@ -61,7 +61,7 @@ public class Player {
         this.armorCurrent = 10;       //il n'est pas tout nue non plus
         this.rmCurrent = 10;
 
-        this.or  = 0;
+        this.or  = 20;
         this.prestige = 0;
 
         this.sac = new ArrayList<Equipement>();     //creation du sac d'equipement / inventaire du personnage

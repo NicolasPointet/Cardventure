@@ -68,7 +68,7 @@ public class Quete implements Screen {
 
         font = new BitmapFont();
 
-        fond = new Sprite( new Texture("fond.png"));
+        fond = new Sprite( new Texture(game.texture.fond));
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
 
@@ -82,9 +82,9 @@ public class Quete implements Screen {
         carte3.generateCarte("quete",0);
 
 
-        spriteCarte1 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
-        spriteCarte2 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
-        spriteCarte3 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
+        spriteCarte1 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
+        spriteCarte2 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
+        spriteCarte3 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
 
 
 
@@ -102,7 +102,7 @@ public class Quete implements Screen {
         stage.addActor(spriteCarte3);
 
 
-        spriteStat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("barre_stats.png"))));
+        spriteStat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.barreStats))));
 
         spriteStat.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()/4);
         spriteStat.setPosition(0,Gdx.graphics.getHeight()*3/4);

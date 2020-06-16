@@ -24,6 +24,7 @@ public class GameOver implements Screen {
     boolean clicked = false;
 
     public Sprite fond;
+    public Sprite fondfin;
     public Sprite warrior;
     private TweenManager tweenManager;
 
@@ -38,20 +39,23 @@ public class GameOver implements Screen {
 
         game.manager.get("audio/defeat.ogg", Sound.class).play();
 
-        Texture fondTexture = new Texture("fondFin.png");
+        Texture fondTexture = new Texture(game.texture.fond);
+        Texture fondFinTexture = new Texture(game.texture.ecranFin);
 
         fond = new Sprite(fondTexture);
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        fondfin = new Sprite(fondFinTexture);
+        fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
-        warrior = new Sprite(new Texture("defeat.png"));
+        warrior = new Sprite(new Texture(game.texture.defaite));
         warrior.setPosition(0,0);
         warrior.setSize(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);
 
         tweenManager = new TweenManager();
         Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 
-        Tween.set(fond,SpriteAccessor.ROTATE).target(-2).start(tweenManager);
-        Tween.to(fond,SpriteAccessor.ROTATE,5).target(2).repeatYoyo(100,0).start(tweenManager);
+        Tween.set(fondfin,SpriteAccessor.ROTATE).target(-2).start(tweenManager);
+        Tween.to(fondfin,SpriteAccessor.ROTATE,5).target(2).repeatYoyo(100,0).start(tweenManager);
 
 
     }
@@ -65,6 +69,7 @@ public class GameOver implements Screen {
 
         game.batch.begin();
         fond.draw(game.batch);
+        fondfin.draw(game.batch);
         warrior.draw(game.batch);
         game.batch.end();
 

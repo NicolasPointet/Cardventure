@@ -3,7 +3,6 @@ package screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -27,8 +26,6 @@ public class Sac implements Screen {
 
     public Sprite fond;
     private Stage stage;
-
-    private Sprite or;
 
     ArrayList<Equipement> listeStuff = new ArrayList<>();       //liste des equipement avec le type recherché
     ArrayList<Equipement> listeStuffs = new ArrayList<>();      //liste de tout les equipements
@@ -65,7 +62,7 @@ public class Sac implements Screen {
     @Override
     public void show() {
 
-        sizeCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
+        sizeCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
         size = sizeCarte.getWidth()/2;
 
 
@@ -73,11 +70,8 @@ public class Sac implements Screen {
 
         font = new BitmapFont();
 
-        fond = new Sprite( new Texture("fond.png"));
+        fond = new Sprite( new Texture(game.texture.fond));
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-
-        or = new Sprite(new Texture("stat_or.png"));
-        or.setCenter(Gdx.graphics.getWidth()*15/16,Gdx.graphics.getHeight()*15/16);
 
 
         for (Equipement stuff : listeStuffs) {
@@ -94,10 +88,10 @@ public class Sac implements Screen {
             float positionY = Gdx.graphics.getHeight()/2;
             ImageButton spriteCarte;
             if (stuff.equipe == false) {
-                spriteCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
+                spriteCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
             }
             else {
-                spriteCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carteEquipe.png"))));
+                spriteCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carteEquipe))));
             }
             spriteCarte.setPosition(positionX,positionY-spriteCarte.getHeight());
             stage.addActor(spriteCarte);
@@ -123,7 +117,7 @@ public class Sac implements Screen {
         }
 
 
-        previousScreen = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("back.png"))));
+        previousScreen = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.back))));
         previousScreen.setPosition(Gdx.graphics.getWidth()*1/20,Gdx.graphics.getHeight()*9/10);
         stage.addActor(previousScreen);
 
@@ -150,7 +144,6 @@ public class Sac implements Screen {
 
         game.batch.begin();
         fond.draw(game.batch);
-        or.draw(game.batch);
         game.batch.end();
 
         stage.act(delta);
@@ -159,18 +152,16 @@ public class Sac implements Screen {
 
         game.batch.begin();
         font.getData().setScale(2);
-        font.setColor(Color.WHITE);
         int compteur = listeStuff.size();
         for (Equipement stuff: listeStuff) {
             float positionX = Gdx.graphics.getWidth()*compteur/(listeStuff.size()+1)-size;
             float positionY = Gdx.graphics.getHeight()/2;
             font.draw(game.batch,stuff.texte,positionX,positionY);
+            Sprite sprite = new Sprite(stuff.texture);
+            sprite.setPosition(positionX,positionY-sizeCarte.getHeight());
+            sprite.draw(game.batch);
             compteur -= 1;
         }
-
-        font.setColor(Color.BLACK);
-
-        font.draw(game.batch,"" + game.player.getOr() + " or",Gdx.graphics.getWidth()*15/16,Gdx.graphics.getHeight()*15/16);
 
         game.batch.end();
 

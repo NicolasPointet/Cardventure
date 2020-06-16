@@ -67,18 +67,18 @@ public class Marchand implements Screen {
 
         font = new BitmapFont();
 
-        fond = new Sprite( new Texture("fond.png"));
+        fond = new Sprite( new Texture(game.texture.fond));
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
 
-        spriteAchat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
-        spriteVente = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
-        spriteRep = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carte.png"))));
+        spriteAchat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
+        spriteVente = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
+        spriteRep = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
 
 
 
 
-        spriteStat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("barre_stats.png"))));
+        spriteStat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.barreStats))));
 
         spriteStat.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()/4);
         spriteStat.setPosition(Gdx.graphics.getWidth()*1/20,Gdx.graphics.getHeight()*4/5);
@@ -95,7 +95,7 @@ public class Marchand implements Screen {
 
         stage.addActor(spriteStat);
 
-        previousScreen = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("back.png"))));
+        previousScreen = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.back))));
         previousScreen.setPosition(Gdx.graphics.getWidth()*1/20,Gdx.graphics.getHeight()*9/10);
         stage.addActor(previousScreen);
 

@@ -54,18 +54,13 @@ public class Choix implements Screen {
 
         font = new BitmapFont();
 
-        fond = new Sprite(new Texture("fond.png"));
+        fond = new Sprite(new Texture(game.texture.fond));
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
-        repo = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carteRepo.png"))));
-        quete = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carteQuete.png"))));
-        marchand = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("carteMarchand.png"))));
+        repo = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carteRepo))));
+        quete = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carteQuete))));
+        marchand = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carteMarchand))));
 
-        /*
-        repo.setSize(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()*3/4);
-        quete.setSize(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()*3/4);
-        marchand.setSize(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()*3/4);
-        */
 
         repo.setPosition(Gdx.graphics.getWidth()/6 - repo.getWidth()/2,Gdx.graphics.getHeight()*3/8 - repo.getHeight()/2);
         quete.setPosition(Gdx.graphics.getWidth()/2 - quete.getWidth()/2,Gdx.graphics.getHeight()*3/8 - quete.getHeight()/2);
@@ -76,7 +71,7 @@ public class Choix implements Screen {
         stage.addActor(marchand);
 
 
-        spriteStat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture("barre_stats.png"))));
+        spriteStat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.barreStats))));
 
         spriteStat.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()/4);
         spriteStat.setPosition(0,Gdx.graphics.getHeight()*3/4);

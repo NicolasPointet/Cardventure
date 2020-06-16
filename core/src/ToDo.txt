@@ -1,7 +1,6 @@
 Reste a faire :
-    - sauvegarder partie
+    - sauvegarder partie (probleme avec stuff)
     - charger partie
     - sprite nouvelle partie
     - sprite continuer partie
     - images stuffs
-    - musique(s)

@@ -1,5 +1,7 @@
 package com.dualyty.cardventure;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class Equipement extends Carte  {
 
     /*
@@ -16,6 +18,8 @@ public class Equipement extends Carte  {
     int prestige;
 
     public boolean equipe;
+
+    public Texture texture;
 
     public CharSequence texte;
     public CharSequence texteEquipe;    //texte lors que l'objet est equipe
@@ -46,7 +50,7 @@ public class Equipement extends Carte  {
         this.or = (int) ((this.armor+this.rm+this.mana)/10) + this.niveau;
                                                     //valeur de l'equipement
 
-        //this.texture = new Texture(type + niveau + ".png");
+        this.texture = new Texture("image/stuff/" + type + niveau + ".png");
                                                     //un "skin" different en fonction de l'objet
 
         this.texte = this.toString();
@@ -86,7 +90,7 @@ public class Equipement extends Carte  {
 
     /* Genere le "niveau" de l'equipement */
     public void generateNiveau () {
-        switch ((int) Math.random()*10) {           //nombre attendu entre 0 et 10;
+        switch ((int) (Math.random()*10)) {           //nombre attendu entre 0 et 10;
             case 10:
             case 9 :
                 this.niveau = 6; break;            // objet divin
