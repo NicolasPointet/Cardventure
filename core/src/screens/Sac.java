@@ -2,6 +2,7 @@ package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -104,6 +105,7 @@ public class Sac implements Screen {
             spriteCarte.addListener(new EventListener() {
                 @Override
                 public boolean handle(Event isClicked) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
                     System.out.println("t'as cliqué");
                     if (game.player.equipe(listeStuff.get(listeStuff.size()- finalCompteur))) {
                         if (listeStuff.size() > 0) {
@@ -128,6 +130,7 @@ public class Sac implements Screen {
         previousScreen.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.perso = new Perso(game));
                 dispose();
                 return true;

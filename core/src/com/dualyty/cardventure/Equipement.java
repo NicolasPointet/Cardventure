@@ -1,6 +1,6 @@
 package com.dualyty.cardventure;
 
-public class Equipement extends Carte {
+public class Equipement extends Carte  {
 
     /*
     classe des cartes equipement

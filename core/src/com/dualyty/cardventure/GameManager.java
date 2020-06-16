@@ -9,9 +9,11 @@ public class GameManager {
 
     private static GameManager ourInstance = new GameManager();
 
-    public Player player;
+    public PlayerData player = new PlayerData();
+    public StuffData stuff = new StuffData();
     private Json json = new Json();
-    private FileHandle fileHandle = Gdx.files.local("bin/saved2.json");
+    public FileHandle fileHandleP = Gdx.files.local("bin/savePlayer.json");
+    public static FileHandle fileHandleS = Gdx.files.local("bin/saveStuff.json");
 
 
     private GameManager() {
@@ -21,8 +23,9 @@ public class GameManager {
 
     public void initializeGameData(Cardventure game) {
         System.out.println("initializeGameData");
-        if (!fileHandle.exists()) {
-            player = new Player();
+        if (!fileHandleP.exists()) {
+            player = new PlayerData(game.player);
+            stuff = new StuffData(game.player);
             savePlayer();
         } else {
             loadPlayer();
@@ -33,17 +36,24 @@ public class GameManager {
         System.out.println("saveGame");
 
         if (player != null) {
-            fileHandle.writeString(Base64Coder.encodeString(json.prettyPrint(player)),
+            fileHandleP.writeString(Base64Coder.encodeString(json.prettyPrint(player)),
                     false);
         }
+        if (stuff != null) {
+            stuff.write(json);
+            //fileHandleS.writeString(Base64Coder.encodeString(json.prettyPrint(stuff)),false);
+        }
+
 
     }
 
     public void loadPlayer() {
         System.out.println("loadGame");
 
-        player = json.fromJson(Player.class,
-                Base64Coder.decodeString(fileHandle.readString()));
+        player = json.fromJson(PlayerData.class,
+                Base64Coder.decodeString(fileHandleP.readString()));
+        stuff = json.fromJson(StuffData.class,
+                Base64Coder.decodeString(fileHandleS.readString()));
     }
 
 

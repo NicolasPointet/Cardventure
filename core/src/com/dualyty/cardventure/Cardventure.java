@@ -1,6 +1,9 @@
 package com.dualyty.cardventure;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import screens.*;
 
@@ -30,7 +33,7 @@ public class Cardventure extends Game {
 
 	public SpriteBatch batch;
 
-
+	public static AssetManager manager;
 
 
 	Cardventure(){}
@@ -38,18 +41,31 @@ public class Cardventure extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+
+		manager = new AssetManager();
+
+		manager.load("audio/theme.ogg", Music.class);
+		manager.load("audio/welcome.ogg", Sound.class);
+		manager.load("audio/defeat.ogg", Sound.class);
+		manager.load("audio/select.ogg", Sound.class);
+		manager.finishLoading();
+
 		GameManager.getInstance().initializeGameData(this);
+
 		this.setScreen(acc);									//envoi vers la page d'accueil
 	}
 
 	@Override
 	public void render () {
 		super.render();
+
 	}
 	
 	@Override
 	public void dispose () {
 		super.dispose();
+		batch.dispose();
+		manager.dispose();
 	}
 
 	@Override

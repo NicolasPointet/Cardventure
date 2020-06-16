@@ -2,6 +2,7 @@ package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -85,6 +86,7 @@ public class Marchand implements Screen {
         spriteStat.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.perso = new Perso(game));     //envoie sur la page repo
                 dispose();
                 return true;
@@ -100,6 +102,7 @@ public class Marchand implements Screen {
         previousScreen.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.choix);
                 dispose();
                 return true;
@@ -126,6 +129,7 @@ public class Marchand implements Screen {
         spriteAchat.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.marchand_achat = new Marchand_achat(game));
                 dispose();
                 return true;
@@ -135,6 +139,7 @@ public class Marchand implements Screen {
         spriteVente.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.marchand_vente = new Marchand_vente(game));
                 dispose();
                 return true;
@@ -144,6 +149,7 @@ public class Marchand implements Screen {
         spriteRep.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.player.setArmorCurrent(game.player.getArmorMax());
                 game.player.setRmCurrent(game.player.getRmMax());
                 game.player.setOr(game.player.getOr()-prixRep);

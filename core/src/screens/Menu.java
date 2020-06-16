@@ -2,6 +2,7 @@ package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -73,6 +74,7 @@ public class Menu implements Screen {
         newGame.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.player = new Player();         //crée un nouveau player
                 game.setScreen(game.choix);
                 dispose();
@@ -83,13 +85,15 @@ public class Menu implements Screen {
         continueGame.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
 
 
                 GameManager.getInstance().loadPlayer();
                 //game.player = GameManager.getInstance().gameData.getPlayer();
                 //game.player.loadPlayer();             //charge la partie precedement sauvegardée
 
-                game.player = GameManager.getInstance().player;
+                GameManager.getInstance().player.getPlayerData(game.player);
+                GameManager.getInstance().stuff.getStuffData(game.player);
 
                 game.setScreen(game.choix);
                 dispose();

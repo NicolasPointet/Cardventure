@@ -2,6 +2,7 @@ package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -97,6 +98,7 @@ public class Marchand_vente implements Screen {
             spriteCarte.addListener(new EventListener() {
                 @Override
                 public boolean handle(Event isClicked) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
                     if (game.player.sell(listeStuff.get(listeStuff.size()- finalCompteur))) {
                         if (listeStuff.size() > 0) {
                             game.setScreen(game.marchand_vente = new Marchand_vente(game));
@@ -120,6 +122,7 @@ public class Marchand_vente implements Screen {
         previousScreen.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.marchand);
                 dispose();
                 return true;

@@ -2,6 +2,7 @@ package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -88,6 +89,7 @@ public class Marchand_achat implements Screen {
         previousScreen.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.marchand);
                 dispose();
                 return true;
@@ -102,6 +104,7 @@ public class Marchand_achat implements Screen {
         spriteCarte1.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 if (game.player.buy(carte1)) {
                     game.setScreen(game.choix);
                     dispose();
@@ -114,6 +117,7 @@ public class Marchand_achat implements Screen {
         spriteCarte2.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 if (game.player.buy(carte2)) {
                     game.setScreen(game.choix);
                     dispose();
@@ -126,6 +130,7 @@ public class Marchand_achat implements Screen {
         spriteCarte3.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 if (game.player.buy(carte3)) {
                     game.setScreen(game.choix);
                     dispose();

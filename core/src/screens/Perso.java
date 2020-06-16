@@ -2,6 +2,7 @@ package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -79,6 +80,7 @@ public class Perso implements Screen {
         previousScreen.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.choix);
                 dispose();
                 return true;
@@ -90,6 +92,7 @@ public class Perso implements Screen {
         sac.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.sac = new Sac(game,null));
                 dispose();
                 return true;
@@ -99,6 +102,7 @@ public class Perso implements Screen {
         teteButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.sac = new Sac(game,"tete"));
                 dispose();
                 return true;
@@ -108,6 +112,7 @@ public class Perso implements Screen {
         corpButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.sac = new Sac(game,"plastron"));
                 dispose();
                 return true;
@@ -117,6 +122,7 @@ public class Perso implements Screen {
         jambeButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.sac = new Sac(game,"jambe"));
                 dispose();
                 return true;
@@ -126,6 +132,7 @@ public class Perso implements Screen {
         mainDroiteButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.sac = new Sac(game,"baton"));
                 dispose();
                 return true;
@@ -135,6 +142,7 @@ public class Perso implements Screen {
         mainGaucheButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.sac = new Sac(game,"bouclier"));
                 dispose();
                 return true;

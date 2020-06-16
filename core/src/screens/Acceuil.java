@@ -4,6 +4,8 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -25,12 +27,22 @@ public class Acceuil implements Screen {
 
     final Cardventure game;
 
+    private Music music;
+
     public Acceuil(Cardventure game) {
+
         this.game = game;
+
+
+
     }
 
     @Override
     public void show() {
+
+        music = game.manager.get("audio/theme.ogg",Music.class);
+        music.setLooping(true);
+        music.play();
 
         fond = new Sprite(new Texture("fond.png"));
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
@@ -70,6 +82,7 @@ public class Acceuil implements Screen {
         game.batch.end();
 
         if (Gdx.input.isTouched()) {
+            game.manager.get("audio/welcome.ogg", Sound.class).play();
             game.setScreen(game.menu);
             dispose();
         }

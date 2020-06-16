@@ -2,6 +2,7 @@ package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -85,6 +86,7 @@ public class FinQuete implements Screen {
         if (Gdx.input.isTouched()) {
             System.out.println("clicked");
             if (clicked == true){
+                game.manager.get("audio/select.ogg", Sound.class).play();
                 game.setScreen(game.choix = new Choix(game));
 
                 /*
@@ -93,7 +95,9 @@ public class FinQuete implements Screen {
 
                  */
 
-                GameManager.getInstance().player = game.player;
+                GameManager.getInstance().player.setPlayerData(game.player);
+                GameManager.getInstance().stuff.setStuffData(game.player);
+
                 GameManager.getInstance().savePlayer();
 
                 dispose();
