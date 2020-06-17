@@ -4,7 +4,6 @@ import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -28,7 +27,6 @@ public class GameOver implements Screen {
     public Sprite warrior;
     private TweenManager tweenManager;
 
-    private Music music;
 
     public GameOver (Cardventure game) {
         this.game = game;
@@ -37,8 +35,9 @@ public class GameOver implements Screen {
     @Override
     public void show() {
 
-        game.manager.get("audio/defeat.ogg", Sound.class).play();
-
+        if (game.musicOn == true) {
+            game.manager.get("audio/defeat.ogg", Sound.class).play();
+        }
         Texture fondTexture = new Texture(game.texture.fond);
         Texture fondFinTexture = new Texture(game.texture.ecranFin);
 

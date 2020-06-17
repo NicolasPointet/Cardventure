@@ -33,12 +33,6 @@ public class Perso implements Screen {
     Sprite mana;
     Sprite or;
 
-    Sprite tete;
-    Sprite corp;
-    Sprite jambe;
-    Sprite mainDroite;
-    Sprite mainGauche;
-
     public Sprite fond;
     private Stage stage;
     ImageButton previousScreen;
@@ -103,7 +97,9 @@ public class Perso implements Screen {
         previousScreen.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.choix);
                 dispose();
                 return true;
@@ -115,7 +111,9 @@ public class Perso implements Screen {
         sac.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.sac = new Sac(game,null));
                 dispose();
                 return true;
@@ -125,7 +123,9 @@ public class Perso implements Screen {
         teteButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.sac = new Sac(game,"tete"));
                 dispose();
                 return true;
@@ -135,7 +135,9 @@ public class Perso implements Screen {
         corpButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.sac = new Sac(game,"plastron"));
                 dispose();
                 return true;
@@ -145,7 +147,9 @@ public class Perso implements Screen {
         jambeButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.sac = new Sac(game,"jambe"));
                 dispose();
                 return true;
@@ -155,7 +159,9 @@ public class Perso implements Screen {
         mainDroiteButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.sac = new Sac(game,"baton"));
                 dispose();
                 return true;
@@ -165,7 +171,9 @@ public class Perso implements Screen {
         mainGaucheButton.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.sac = new Sac(game,"bouclier"));
                 dispose();
                 return true;

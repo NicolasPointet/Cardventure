@@ -85,7 +85,9 @@ public class Choix implements Screen {
         spriteStat.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.perso = new Perso(game));     //envoie sur la page repo
                 dispose();
                 return true;
@@ -95,7 +97,9 @@ public class Choix implements Screen {
         repo.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.repo = new Repo(game));     //envoie sur la page repo
                 dispose();
                 return true;
@@ -105,7 +109,9 @@ public class Choix implements Screen {
         quete.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.quete = new Quete(game,(int)(Math.random()*7) +  3));
                 dispose();                                      //envoie sur la page quete avec le nombre de tour a survivre pour finir la quete
                 return true;
@@ -115,7 +121,9 @@ public class Choix implements Screen {
         marchand.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.marchand);                  //envoie sur la page marchand
                 dispose();
                 return true;

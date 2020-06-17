@@ -40,9 +40,11 @@ public class Acceuil implements Screen {
     @Override
     public void show() {
 
-        music = game.manager.get("audio/theme.ogg",Music.class);
-        music.setLooping(true);
-        music.play();
+        if (game.musicOn == true) {
+            music = game.manager.get("audio/theme.ogg", Music.class);
+            music.setLooping(true);
+            music.play();
+        }
 
         fond = new Sprite(new Texture(game.texture.fond));
         fond.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
@@ -82,7 +84,9 @@ public class Acceuil implements Screen {
         game.batch.end();
 
         if (Gdx.input.isTouched()) {
-            game.manager.get("audio/welcome.ogg", Sound.class).play();
+            if (game.musicOn == true) {
+                game.manager.get("audio/welcome.ogg", Sound.class).play();
+            }
             game.setScreen(game.menu);
             dispose();
         }

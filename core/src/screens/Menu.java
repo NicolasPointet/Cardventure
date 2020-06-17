@@ -65,7 +65,9 @@ public class Menu implements Screen {
         newGame.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.player = new Player();         //crée un nouveau player
                 game.setScreen(game.choix);
                 dispose();
@@ -76,15 +78,15 @@ public class Menu implements Screen {
         continueGame.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
 
+                if (game.saveOn == true) {
+                    GameManager.getInstance().player.getPlayerData(game.player);
 
-                GameManager.getInstance().loadPlayer();
-                //game.player = GameManager.getInstance().gameData.getPlayer();
-                //game.player.loadPlayer();             //charge la partie precedement sauvegardée
-
-                GameManager.getInstance().player.getPlayerData(game.player);
-                GameManager.getInstance().stuff.getStuffData(game.player);
+                    //GameManager.getInstance().stuff.getStuffData(game.player);
+                }
 
                 game.setScreen(game.choix);
                 dispose();

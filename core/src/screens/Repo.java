@@ -98,7 +98,9 @@ public class Repo implements Screen {
         spriteCarte1.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.player.action(carte1);
                 game.setScreen(game.choix);
                 dispose();
@@ -109,7 +111,9 @@ public class Repo implements Screen {
         spriteCarte2.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.player.action(carte2);
                 game.setScreen(game.choix);
                 dispose();
@@ -120,7 +124,9 @@ public class Repo implements Screen {
         spriteCarte3.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.player.action(carte3);
                 game.setScreen(game.choix);
                 dispose();

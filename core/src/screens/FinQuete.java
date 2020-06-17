@@ -86,19 +86,18 @@ public class FinQuete implements Screen {
         if (Gdx.input.isTouched()) {
             System.out.println("clicked");
             if (clicked == true){
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.choix = new Choix(game));
 
-                /*
-                GameManager.getInstance().gameData.setPlayer(game);
-                GameManager.getInstance().savePlayer();
+                if (game.saveOn == true) {
+                    GameManager.getInstance().player.setPlayerData(game.player);
+                    //GameManager.getInstance().stuff.setStuffData(game.player);
 
-                 */
+                    GameManager.getInstance().savePlayer();
+                }
 
-                GameManager.getInstance().player.setPlayerData(game.player);
-                GameManager.getInstance().stuff.setStuffData(game.player);
-
-                GameManager.getInstance().savePlayer();
 
                 dispose();
             }

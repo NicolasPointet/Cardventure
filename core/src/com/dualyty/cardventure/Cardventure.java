@@ -9,6 +9,9 @@ import screens.*;
 
 public class Cardventure extends Game {
 
+	public final static boolean musicOn = false;
+	public final static boolean saveOn = false;
+
 	public static final String NAME = "Cardventure", VERSION = "0.8";
 																//en cours de devellopement
 
@@ -29,12 +32,10 @@ public class Cardventure extends Game {
 	public GameOver gameOver = new GameOver(this);				//page si plus de vie
 	public FinQuete finQuete = new FinQuete(this,0);		//page de fin de quete
 
-	public Test test = new Test(this);					//sert a tester des choses, ne sera plus dans le version finale
-
 	public SpriteBatch batch;
 	public Image texture = new Image();
-	public static AssetManager manager;
 
+	public static AssetManager manager;
 
 	Cardventure(){}
 	
@@ -42,15 +43,21 @@ public class Cardventure extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 
-		manager = new AssetManager();
+		if (musicOn == true) {
 
-		manager.load("audio/theme.ogg", Music.class);
-		manager.load("audio/welcome.ogg", Sound.class);
-		manager.load("audio/defeat.ogg", Sound.class);
-		manager.load("audio/select.ogg", Sound.class);
-		manager.finishLoading();
+			manager = new AssetManager();
 
-		GameManager.getInstance().initializeGameData(this);
+			manager.load("audio/theme.ogg", Music.class);
+			manager.load("audio/welcome.ogg", Sound.class);
+			manager.load("audio/defeat.ogg", Sound.class);
+			manager.load("audio/select.ogg", Sound.class);
+			manager.finishLoading();
+		}
+
+
+		if (saveOn == true) {
+			GameManager.getInstance().initializeGameData(this);
+		}
 
 		this.setScreen(acc);									//envoi vers la page d'accueil
 	}
@@ -58,14 +65,12 @@ public class Cardventure extends Game {
 	@Override
 	public void render () {
 		super.render();
-
 	}
 	
 	@Override
 	public void dispose () {
 		super.dispose();
 		batch.dispose();
-		manager.dispose();
 	}
 
 	@Override

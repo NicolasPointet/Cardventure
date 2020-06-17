@@ -99,7 +99,9 @@ public class Sac implements Screen {
             spriteCarte.addListener(new EventListener() {
                 @Override
                 public boolean handle(Event isClicked) {
-                    game.manager.get("audio/select.ogg", Sound.class).play();
+                    if (game.musicOn == true) {
+                        game.manager.get("audio/select.ogg", Sound.class).play();
+                    }
                     System.out.println("t'as cliqué");
                     if (game.player.equipe(listeStuff.get(listeStuff.size()- finalCompteur))) {
                         if (listeStuff.size() > 0) {
@@ -124,7 +126,9 @@ public class Sac implements Screen {
         previousScreen.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.perso = new Perso(game));
                 dispose();
                 return true;

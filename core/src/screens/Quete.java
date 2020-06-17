@@ -116,7 +116,9 @@ public class Quete implements Screen {
         spriteCarte1.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 compteur -= 1;      //decremente le compteur
                 if (compteur < 0) {
                     System.out.println("compteur negatif");
@@ -151,7 +153,9 @@ public class Quete implements Screen {
         spriteCarte2.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 compteur -= 1;
                 if (compteur < 0) {
                     System.out.println("compteur negatif");
@@ -184,7 +188,9 @@ public class Quete implements Screen {
         spriteCarte3.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 compteur -= 1;
                 if (compteur < 0) {
                     System.out.println("compteur negatif");

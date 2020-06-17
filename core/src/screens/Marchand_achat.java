@@ -17,6 +17,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.dualyty.cardventure.Cardventure;
 import com.dualyty.cardventure.Equipement;
 
+import java.util.ArrayList;
+
 public class Marchand_achat implements Screen {
 
     /*
@@ -36,20 +38,48 @@ public class Marchand_achat implements Screen {
     Equipement carte2;
     Equipement carte3;
 
+    Equipement myCarte4;
+    Equipement myCarte5;
+    Equipement myCarte6;
+
     Sprite sprite1;
     Sprite sprite2;
     Sprite sprite3;
 
     ImageButton previousScreen;
 
+    ImageButton sizeCarte;
+    float size;
+
+    ArrayList<Equipement> listeStuff = new ArrayList<>();
+
     BitmapFont font;
 
     public Marchand_achat(Cardventure game) {
         this.game = game;
+
+        if (game.player.tete != null) {
+            listeStuff.add(game.player.tete);
+        }
+        if (game.player.plastron != null) {
+            listeStuff.add(game.player.plastron);
+        }
+        if (game.player.jambe != null) {
+            listeStuff.add(game.player.jambe);
+        }
+        if (game.player.maingauche != null) {
+            listeStuff.add(game.player.maingauche);
+        }
+        if (game.player.maindroite != null) {
+            listeStuff.add(game.player.maindroite);
+        }
     }
 
     @Override
     public void show() {
+
+        sizeCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
+        size = sizeCarte.getWidth()/2;
 
         stage = new Stage(new ScreenViewport());
 
@@ -71,22 +101,10 @@ public class Marchand_achat implements Screen {
         buttonCarte3 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
 
 
-        buttonCarte1.setPosition(Gdx.graphics.getWidth()/6 - buttonCarte1.getWidth()/2,Gdx.graphics.getHeight()*3/8 - buttonCarte1.getHeight()/2);
-        buttonCarte2.setPosition(Gdx.graphics.getWidth()/2 - buttonCarte2.getWidth()/2,Gdx.graphics.getHeight()*3/8 - buttonCarte2.getHeight()/2);
-        buttonCarte3.setPosition(Gdx.graphics.getWidth()*5/6 - buttonCarte3.getWidth()/2,Gdx.graphics.getHeight()*3/8 - buttonCarte3.getHeight()/2);
+        buttonCarte1.setPosition(Gdx.graphics.getWidth()/6 - buttonCarte1.getWidth()/2,Gdx.graphics.getHeight()/2 - buttonCarte1.getHeight());
+        buttonCarte2.setPosition(Gdx.graphics.getWidth()/2 - buttonCarte2.getWidth()/2,Gdx.graphics.getHeight()/2 - buttonCarte2.getHeight());
+        buttonCarte3.setPosition(Gdx.graphics.getWidth()*5/6 - buttonCarte3.getWidth()/2,Gdx.graphics.getHeight()/2 - buttonCarte3.getHeight());
 
-        /*
-
-        buttonCarte1.setSize(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()*3/4);
-        buttonCarte1.setPosition(Gdx.graphics.getWidth()*0,0);
-
-        buttonCarte2.setSize(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()*3/4);
-        buttonCarte2.setPosition(Gdx.graphics.getWidth()*1/3,0);
-
-        buttonCarte3.setSize(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()*3/4);
-        buttonCarte3.setPosition(Gdx.graphics.getWidth()*2/3,0);
-
-         */
 
         stage.addActor(buttonCarte1);
         stage.addActor(buttonCarte2);
@@ -99,6 +117,25 @@ public class Marchand_achat implements Screen {
         sprite3 = new Sprite(carte3.texture);
         sprite3.setPosition(buttonCarte3.getX(),buttonCarte3.getY());
 
+
+        int compteur = listeStuff.size()+1;
+        for (Equipement stuff: listeStuff) {
+            compteur -= 1;
+
+            ImageButton spriteCarte;
+            spriteCarte = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carteEquipe))));
+
+            float positionX = Gdx.graphics.getWidth()*compteur/(listeStuff.size()+1)-spriteCarte.getWidth()/2;
+            float positionY = Gdx.graphics.getHeight()/2;
+
+            spriteCarte.setPosition(positionX,positionY);
+            stage.addActor(spriteCarte);
+        }
+
+
+
+
+
         previousScreen = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.back))));
         previousScreen.setPosition(Gdx.graphics.getWidth()*1/20,Gdx.graphics.getHeight()*9/10);
         stage.addActor(previousScreen);
@@ -106,7 +143,9 @@ public class Marchand_achat implements Screen {
         previousScreen.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.marchand);
                 dispose();
                 return true;
@@ -121,7 +160,9 @@ public class Marchand_achat implements Screen {
         buttonCarte1.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 if (game.player.buy(carte1)) {
                     game.setScreen(game.choix);
                     dispose();
@@ -134,7 +175,9 @@ public class Marchand_achat implements Screen {
         buttonCarte2.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 if (game.player.buy(carte2)) {
                     game.setScreen(game.choix);
                     dispose();
@@ -147,7 +190,9 @@ public class Marchand_achat implements Screen {
         buttonCarte3.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 if (game.player.buy(carte3)) {
                     game.setScreen(game.choix);
                     dispose();
@@ -188,6 +233,17 @@ public class Marchand_achat implements Screen {
         font.draw(game.batch,carte1.texte,buttonCarte1.getX(),buttonCarte1.getY()+buttonCarte1.getHeight());
         font.draw(game.batch,carte2.texte,buttonCarte2.getX(),buttonCarte2.getY()+buttonCarte2.getHeight());
         font.draw(game.batch,carte3.texte,buttonCarte3.getX(),buttonCarte3.getY()+buttonCarte3.getHeight());
+
+        int compteur = listeStuff.size();
+        for (Equipement stuff: listeStuff) {
+            float positionX = Gdx.graphics.getWidth()*compteur/(listeStuff.size()+1)-size;
+            float positionY = Gdx.graphics.getHeight()/2+sizeCarte.getHeight();
+            font.draw(game.batch,stuff.texte,positionX,positionY);
+            Sprite sprite = new Sprite(stuff.texture);
+            sprite.setPosition(positionX,positionY-sizeCarte.getHeight());
+            sprite.draw(game.batch);
+            compteur -= 1;
+        }
         game.batch.end();
 
 

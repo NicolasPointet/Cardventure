@@ -98,7 +98,9 @@ public class Marchand_vente implements Screen {
             spriteCarte.addListener(new EventListener() {
                 @Override
                 public boolean handle(Event isClicked) {
-                    game.manager.get("audio/select.ogg", Sound.class).play();
+                    if (game.musicOn == true) {
+                        game.manager.get("audio/select.ogg", Sound.class).play();
+                    }
                     if (game.player.sell(listeStuff.get(listeStuff.size()- finalCompteur))) {
                         if (listeStuff.size() > 0) {
                             game.setScreen(game.marchand_vente = new Marchand_vente(game));
@@ -122,7 +124,9 @@ public class Marchand_vente implements Screen {
         previousScreen.addListener(new EventListener() {
             @Override
             public boolean handle(Event isClicked) {
-                game.manager.get("audio/select.ogg", Sound.class).play();
+                if (game.musicOn == true) {
+                    game.manager.get("audio/select.ogg", Sound.class).play();
+                }
                 game.setScreen(game.marchand);
                 dispose();
                 return true;
