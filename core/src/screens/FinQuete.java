@@ -39,7 +39,7 @@ public class FinQuete implements Screen {
         this.recompense = recompense;
         this.or = (int)(this.recompense/2);
         this.prestige = (int)(this.recompense/5);
-        for (int i = 0; i < (int)(this.recompense/10); i++){    //tout les 10 de recompense, ajoute un nouvel equipement
+        for (int i = 0; i < (int)(this.recompense/10); i++){    //tout les 10 points de recompense, ajoute un nouvel equipement
             equipement.add(new Equipement(this.game));
         }
 

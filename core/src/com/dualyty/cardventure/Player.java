@@ -8,18 +8,8 @@ public class Player {
     Classe qui représente le joueur, ses stats, sa progression
      */
 
-    //final Cardventure game;
 
-    /*
-    //This will get your preferences from storage
-    Preferences save = Gdx.app.getPreferences("save");
-    Map<String,Equipement> saveSac;
-
-     */
-
-    //statistiques max
-
-    //statistiques "en cours"
+    //statistiques
     private int lifeCurrent;
     private int manaCurrent;
     private int armorCurrent;
@@ -31,108 +21,44 @@ public class Player {
 
 
     //equipement
+
+        //equipement équipé
     public Equipement tete;
     public Equipement plastron;
     public Equipement jambe;
     public Equipement maingauche;
     public Equipement maindroite;
 
-    public ArrayList<Equipement> sac;      //le sac a dos du jour, ou entreposer son stuff
+        //inventaire
+    public ArrayList<Equipement> sac;       //le sac a dos du jour, ou entreposer son stuff
 
-    /*
-    public Player(Cardventure game) {       //initialisation de ses stats
-        this.game = game;
 
+    public Player() {                       //création d'un joueur
+                                            //initialisation de ses stats
         this.lifeCurrent = 100;
-        this.manaCurrent = 20;
-        this.armorCurrent = 10;       //il n'est pas tout nue non plus
-        this.rmCurrent = 10;
+        this.manaCurrent = 12;
+        this.armorCurrent = 5;             //il n'est pas tout nue non plus
+        this.rmCurrent = 5;
 
-        this.or  = 0;
+        this.or  = 2;
         this.prestige = 0;
 
-        this.sac = new ArrayList<Equipement>();     //creation du sac d'equipement / inventaire du personnage
-    }*/
-
-    public Player() {       //initialisation de ses stats
-
-        this.lifeCurrent = 100;
-        this.manaCurrent = 20;
-        this.armorCurrent = 10;       //il n'est pas tout nue non plus
-        this.rmCurrent = 10;
-
-        this.or  = 20;
-        this.prestige = 0;
-
-        this.sac = new ArrayList<Equipement>();     //creation du sac d'equipement / inventaire du personnage
+        this.sac = new ArrayList<Equipement>();
+                                            //creation du sac d'equipement / inventaire du personnage
     }
 
-    /*
 
-    public void loadPlayer() {
-
-        //to do
-
-        //Get value from a preference key "key" (must not be empty)
-        game.player.setLifeCurrent(save.getInteger("vie"));
-        game.player.setArmorCurrent(save.getInteger("armor"));
-        game.player.setManaCurrent(save.getInteger("mana"));
-        game.player.setRmCurrent(save.getInteger("rm"));
-        game.player.setOr(save.getInteger("or"));
-        game.player.setPrestige(save.getInteger("prestige"));
-
-        save.get();
-    }
-
-    public void savePlayer(Cardventure game) {
-
-        save.putInteger("vie", game.player.getLifeCurrent());
-        save.putInteger("armor", game.player.getArmorCurrent());
-        //save.putInteger("armorMax", game.player.getArmorMax());
-        save.putInteger("mana", game.player.getManaCurrent());
-        //save.putInteger("manaMax", game.player.getManaMax());
-        save.putInteger("rm", game.player.getRmCurrent());
-        //save.putInteger("rmMax", game.player.getRmMax());
-        save.putInteger("or", game.player.getOr());
-        save.putInteger("prestige", game.player.getPrestige());
-
-
-        saveSac = new HashMap<>();
-        saveSac.put("tete",game.player.tete);
-        saveSac.put("plastron",game.player.plastron);
-        saveSac.put("jambe",game.player.jambe);
-        saveSac.put("maindroite",game.player.maindroite);
-        saveSac.put("maingauche",game.player.maingauche);
-
-        int i = 0;
-        for (Equipement stuff: game.player.sac) {
-            saveSac.put("sac" + i,stuff);
-            i ++;
-        }
-
-        save.put(saveSac);
-
-
-        //This will finally save the changes to storage
-        save.flush();
-
-    }
-
-     */
-
-
-
-    public boolean sell(Equipement equipement) {                                //vendre un equipement
-     if (equipement.equipe == false){                                           //si l'equipement n'est pas equipe
+    public boolean sell(Equipement equipement) {                    //vendre un equipement
+     if (equipement.equipe == false){                               //si l'equipement n'est pas equipe
          if (this.sac.contains(equipement)) {                       //s'il est bien dans le sac du joueur
                 this.or += (int) (equipement.or * 0.8);             //rapporte 80% de sa valeur en or
                 this.sac.remove(equipement);                        //disparait du sac
                 return true;
             }
      }
-     else {
+     else {                                                         //si l'equipement est equipe
          this.or += (int) (equipement.or * 0.8);
-         switch (equipement.getType()) {                                        //si l'equipement est equipe
+         switch (equipement.getType()) {
              case "tete" :
                  this.tete = null;
                  return true;
@@ -155,18 +81,18 @@ public class Player {
      return false;
      }
 
-    public boolean buy(Equipement equipement) {                             //acheter un equipement
+    public boolean buy(Equipement equipement) {                 //acheter un equipement
         if (!this.sac.contains(equipement)) {                   //s'il n'est pas déja dans le sac
             if (equipement.or <= this.or) {                     //si le joueur a les moyen
-                this.or -= equipement.or;                           //le joueur paye
-                this.sac.add(equipement);                           //ajouté au sac
+                this.or -= equipement.or;                       //le joueur paye
+                this.sac.add(equipement);                       //ajouté au sac
                 return true;
             }
         }
         return false;
     }
 
-    public boolean equipe(Equipement equipement) {
+    public boolean equipe(Equipement equipement) {              //permet d'équiper un equipement
         System.out.println("Je veux equiper un equipement");
         if (equipement.equipe == false) {
             System.out.println("Il n'est pas déja equipé");
@@ -277,7 +203,6 @@ public class Player {
     }
 
 
-
     /* lorsqu'une carte repo ou quete s'applique au joueur */
     public boolean action(Carte carte) {
 
@@ -326,15 +251,16 @@ public class Player {
 
 
         if (this.getLifeCurrent() >= 1) { return true; }        //Tant que le joueur est en vie on renvoie true
-        return false;                                                       //Si le joueur n'a plus de vie on renvoie false
+        return false;                                           //Si le joueur n'a plus de vie on renvoie false
     }
 
 
     public void giveStuff(Equipement stuff) {
         this.sac.add(stuff);
-    }
+    }        //ajoute equipement a l'inventaire
 
     public void giveRecompense (int or, int prestige, ArrayList<Equipement> equipement) {
+                                                                            //récompense de fin de quete
         System.out.println("giveRecompense");
         this.setOr(this.getOr() + or);
         this.setPrestige((this.getPrestige() + prestige));
@@ -349,9 +275,9 @@ public class Player {
 
     public int getLifeMax() {
         return 100;
-    }
+    }   //la vie est toujours sur 100
 
-    public int getManaMax() {
+    public int getManaMax() {                 //calculée en fonction de l'equipement équipé
         int mana = 20;
         if (this.tete != null) {
             mana += this.tete.mana;

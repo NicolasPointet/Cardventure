@@ -23,18 +23,14 @@ public class Acceuil implements Screen {
     private Sprite titre;
     private Sprite passer;
 
-    private TweenManager tweenManager;          //permet de créer effets sur sprite
+    private TweenManager tweenManager;          //permet de créer des effets sur des sprites
 
     final Cardventure game;
 
     private Music music;
 
     public Acceuil(Cardventure game) {
-
         this.game = game;
-
-
-
     }
 
     @Override

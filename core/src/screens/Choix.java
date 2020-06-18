@@ -88,7 +88,7 @@ public class Choix implements Screen {
                 if (game.musicOn == true) {
                     game.manager.get("audio/select.ogg", Sound.class).play();
                 }
-                game.setScreen(game.perso = new Perso(game));     //envoie sur la page repo
+                game.setScreen(game.perso = new Perso(game));     //envoie sur la page perso
                 dispose();
                 return true;
             }
@@ -143,11 +143,14 @@ public class Choix implements Screen {
         fond.draw(game.batch);
         game.batch.end();
 
-        stage.act(delta); //Perform ui logic
-        stage.draw(); //Draw the ui
+        stage.act(delta);   //Perform ui logic
+        stage.draw();       //Draw the ui
 
         game.batch.begin();
         font.getData().setScale(2);
+        /*
+         *affiche les stats du perso
+         */
         font.draw(game.batch,"  " + game.player.getLifeCurrent() + " / " + game.player.getLifeMax() + " vie",Gdx.graphics.getWidth()*2/16,Gdx.graphics.getHeight()*7/8);
         font.draw(game.batch,"" + game.player.getManaCurrent() + " / " + game.player.getManaMax() + " mana",Gdx.graphics.getWidth()*5/16,Gdx.graphics.getHeight()*7/8);
         font.draw(game.batch,"" + game.player.getArmorCurrent() + " / " + game.player.getArmorMax() + " armure",Gdx.graphics.getWidth()*8/16,Gdx.graphics.getHeight()*7/8);

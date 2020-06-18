@@ -241,7 +241,7 @@ public class Quete implements Screen {
         font.draw(game.batch,carte2.texte,spriteCarte2.getX() + spriteCarte2.getWidth()/4,spriteCarte2.getHeight()*3/4);
         font.draw(game.batch,carte3.texte,spriteCarte3.getX() +spriteCarte3.getWidth()/4,spriteCarte3.getHeight()*3/4);
 
-        font.draw(game.batch,"" + this.compteur + " " + this.recompense,500,500);
+        //font.draw(game.batch,"" + this.compteur + " " + this.recompense,500,500);
 
         font.draw(game.batch,"  " + game.player.getLifeCurrent() + " / " + game.player.getLifeMax() + " vie",Gdx.graphics.getWidth()*2/16,Gdx.graphics.getHeight()*7/8);
         font.draw(game.batch,"" + game.player.getManaCurrent() + " / " + game.player.getManaMax() + " mana",Gdx.graphics.getWidth()*5/16,Gdx.graphics.getHeight()*7/8);

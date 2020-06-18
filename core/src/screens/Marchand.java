@@ -41,7 +41,7 @@ public class Marchand implements Screen {
 
     public Marchand (Cardventure game) {
         this.game = game;
-        float tarif = 0;
+        float tarif = 0;    //calcul du prix de la réparation du stuff, enfonction du stuff équipé
         if (game.player.tete != null) {
             tarif += game.player.tete.or * 0.2;
         }
@@ -57,7 +57,7 @@ public class Marchand implements Screen {
         if (game.player.maingauche != null) {
             tarif += game.player.maingauche.or * 0.2;
         }
-        prixRep = 1 + (int) tarif;
+        prixRep = 1 + (int) tarif;      //prix de la réparation du stuff équipé
     }
 
     @Override
@@ -74,8 +74,6 @@ public class Marchand implements Screen {
         spriteAchat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
         spriteVente = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
         spriteRep = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.carte))));
-
-
 
 
         spriteStat = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(game.texture.barreStats))));
