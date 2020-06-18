@@ -69,8 +69,8 @@ public class Menu implements Screen {
                     game.manager.get("audio/select.ogg", Sound.class).play();
                 }
                 game.player = new Player();         //crée un nouveau player
-                game.setScreen(game.choix);
-                dispose();
+                game.setScreen(game.tutoriel);
+                //dispose();
                 return true;
             }
         });

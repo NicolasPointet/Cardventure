@@ -25,7 +25,9 @@ public class GameManager {
         System.out.println("initializeGameData");
         if (!fileHandleP.exists()) {
             player = new PlayerData(game.player);
-            //stuff = new StuffData(game.player);
+            if (!fileHandleS.exists()){
+                //stuff = new StuffData(game.player);
+            }
             savePlayer();
         } else {
             loadPlayer();
@@ -40,7 +42,6 @@ public class GameManager {
                     false);
         }
         if (stuff != null) {
-            //stuff.write(json);
             //fileHandleS.writeString(Base64Coder.encodeString(json.prettyPrint(stuff)),false);
         }
 
@@ -52,7 +53,7 @@ public class GameManager {
 
         player = json.fromJson(PlayerData.class,
                 Base64Coder.decodeString(fileHandleP.readString()));
-        //stuff = json.fromJson(StuffData.class,fileHandleS.readString());
+        //stuff = json.fromJson(StuffData.class,Base64Coder.decodeString(fileHandleS.readString()));
     }
 
 

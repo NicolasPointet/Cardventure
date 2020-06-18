@@ -9,8 +9,8 @@ import screens.*;
 
 public class Cardventure extends Game {
 
-	public final static boolean musicOn = false;
-	public final static boolean saveOn = false;
+	public final static boolean musicOn = true;
+	public final static boolean saveOn = true;
 
 	public static final String NAME = "Cardventure", VERSION = "0.8";
 																//en cours de devellopement
@@ -18,6 +18,7 @@ public class Cardventure extends Game {
 	public Player player =  new Player();			//le joueur
 
 	public Acceuil acc = new Acceuil(this);				//la page d'accueil / ecran titre
+	public Tutoriel tutoriel = new Tutoriel(this,1);
 	public Menu menu = new Menu(this);					//le menu
 	public Choix choix = new Choix(this);				//page de choix d'une carte parmis 3
 	public Repo repo = new Repo (this);					//page de choix d'une carte repo

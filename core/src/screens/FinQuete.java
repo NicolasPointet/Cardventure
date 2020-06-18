@@ -93,7 +93,7 @@ public class FinQuete implements Screen {
 
                 if (game.saveOn == true) {
                     GameManager.getInstance().player.setPlayerData(game.player);
-                    //GameManager.getInstance().stuff.setStuffData(game.player);
+                    GameManager.getInstance().stuff.setStuffData(game.player);
 
                     GameManager.getInstance().savePlayer();
                 }
